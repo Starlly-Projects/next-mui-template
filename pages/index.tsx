@@ -1,5 +1,7 @@
-const HomePage = () => {
-  return <h1>Hola mundo!</h1>;
-};
+import HomeView from '@/components/views/Home'
 
-export default HomePage;
+const HomePage = () => {
+  return <HomeView />
+}
+
+export default HomePage
