@@ -23,9 +23,15 @@ export interface GeneralState {
   geoip?: GeoIP
 }
 
+export interface EnvProps {
+  APP_NAME?: string
+  ENVIRONTMENT?: string
+}
+
 export interface GeneralContextProps {
   generalState: GeneralState
   lang: string
+  env: EnvProps
   setLang: (lang: string) => void
 }
 
@@ -76,6 +82,7 @@ export const GeneralContextProvider = ({
   return (
     <GeneralContext.Provider
       value={{
+        env: pageProps?.env,
         lang,
         generalState: {
           geoip,

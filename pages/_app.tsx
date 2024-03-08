@@ -13,6 +13,10 @@ import { ApolloProvider } from '@apollo/client'
 // import { CURRENT_LANG, SESSION_TOKEN } from '@/constants/cookieConstants'
 // import { checkSessionAndRedirect } from '@/utils/serverFunctions'
 import getApolloClient from '@/Graphql/GraphqlHttpSetup'
+import { getCookie } from '@/utils/cookie'
+import { CURRENT_LANG, SESSION_TOKEN } from '@/constants/cookieConstants'
+import { getProp } from '@/utils'
+import { checkSessionAndRedirect } from '@/utils/serverFunctions'
 // import { getCurrentUser } from '@/api/system/auth'
 // import { getProp } from '@/utils'
 
@@ -62,32 +66,45 @@ const redirect = (ctx: any, uri: string) => {
   }
 }
 
-// App.getInitialProps = async ({ Component, ctx }: any) => {
-//   App.getServerSideProps ? App.getServerSideProps(ctx) : null
-//   const query = getProp(ctx, 'query', {})
+App.getInitialProps = async ({ Component, ctx }: any) => {
+  App.getServerSideProps ? App.getServerSideProps(ctx) : null
+  const langHeader = ctx?.req?.headers['accept-language']
+  const locale = (langHeader || '').match(/^[a-zA-Z]{2,10}/)?.[0] || 'en'
+  const query = getProp(ctx, 'query', {})
 
-//   const pageProps = Component.getInitialProps
-//     ? (await Component.getInitialProps(ctx)) || {}
-//     : {}
+  const pageProps = Component.getInitialProps
+    ? (await Component.getInitialProps(ctx)) || {}
+    : {}
 
-//   const session = getCookie(SESSION_TOKEN, ctx)
-//   const lang = getCookie(CURRENT_LANG, ctx)
-//   pageProps.session = session
-//   pageProps.user = await getCurrentUser(session)
-//   pageProps.lang = lang
-//   return { pageProps: { ...pageProps, ...query } }
-// }
+  const session = getCookie(SESSION_TOKEN, ctx)
+  const lang = getCookie(CURRENT_LANG, ctx)
+  pageProps.session = session
+  // pageProps.user = await getCurrentUser(session)
+  pageProps.lang = lang || locale
+  return { pageProps: { ...pageProps, ...query, env: process.env } }
+}
 
-// App.getServerSideProps = (ctx: any) => {
-//   const resultRedirect = checkSessionAndRedirect({
-//     targetPath: '/dashboard',
-//     pathMatching: 'partial',
-//     destination: '/login',
-//     conditionType: 'negative',
-//   })(ctx)
+App.getServerSideProps = (ctx: any) => {
+  const resultRedirect = checkSessionAndRedirect({
+    targetPath: '/dashboard',
+    pathMatching: 'partial',
+    destination: '/login',
+    conditionType: 'negative',
+  })(ctx)
 
-//   if (resultRedirect.redirect) {
-//     redirect(ctx, resultRedirect?.redirect?.destination)
+  if (resultRedirect.redirect) {
+    redirect(ctx, resultRedirect?.redirect?.destination)
+  }
+}
+
+// export async function getStaticProps() {
+//   console.log(process.env.NODE_ENV)
+//   console.log(process.env.APP_NAME)
+
+//   return {
+//     props: {
+//       env: process.env,
+//     },
 //   }
 // }
 
