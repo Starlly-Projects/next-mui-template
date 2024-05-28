@@ -69,7 +69,7 @@ const redirect = (ctx: any, uri: string) => {
 App.getInitialProps = async ({ Component, ctx }: any) => {
   App.getServerSideProps ? App.getServerSideProps(ctx) : null
   const langHeader = ctx?.req?.headers['accept-language']
-  const locale = (langHeader || '').match(/^[a-zA-Z]{2,10}/)?.[0] || 'en'
+  const locale = ctx.locale || (langHeader || '').match(/^[a-zA-Z]{2,10}/)?.[0] || 'en'
   const query = getProp(ctx, 'query', {})
 
   const pageProps = Component.getInitialProps
