@@ -12,6 +12,10 @@ export const HomeContainer = styled('div')`
 
     .options-container {
       margin-left: auto;
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      align-items: center;
     }
   }
 `

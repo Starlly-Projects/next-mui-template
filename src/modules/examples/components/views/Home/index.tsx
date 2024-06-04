@@ -2,6 +2,7 @@ import useEnv from '@/core/hooks/useEnv'
 import useWords from '@/modules/core/hooks/useWords'
 import { HomeContainer } from './styles'
 import LangSelector from '../../shared/LangSelector'
+import ThemeSwitch from '../../shared/ThemeSwitch'
 
 const HomeView = () => {
   const { getKey } = useEnv()
@@ -20,6 +21,7 @@ const HomeView = () => {
         </div>
 
         <div className='options-container'>
+          <ThemeSwitch />
           <LangSelector />
         </div>
       </div>
