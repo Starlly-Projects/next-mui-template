@@ -68,9 +68,9 @@ const redirect = (ctx: any, uri: string) => {
 }
 
 App.getInitialProps = async ({ Component, ctx }: any) => {
-  App.getServerSideProps ? App.getServerSideProps(ctx) : null
   const langHeader = ctx?.req?.headers['accept-language']
-  const locale = ctx.locale || (langHeader || '').match(/^[a-zA-Z]{2,10}/)?.[0] || 'en'
+  const locale =
+    ctx.locale || (langHeader || '').match(/^[a-zA-Z]{2,10}/)?.[0] || 'en'
   const query = getProp(ctx, 'query', {})
 
   const pageProps = Component.getInitialProps
@@ -81,32 +81,8 @@ App.getInitialProps = async ({ Component, ctx }: any) => {
   const lang = getCookie(CURRENT_LANG, ctx)
   pageProps.session = session
   // pageProps.user = await getCurrentUser(session)
-  pageProps.lang = lang || locale
+  pageProps.lang = locale || lang
   return { pageProps: { ...pageProps, ...query, env: process.env } }
 }
-
-App.getServerSideProps = (ctx: any) => {
-  const resultRedirect = checkSessionAndRedirect({
-    targetPath: '/dashboard',
-    pathMatching: 'partial',
-    destination: '/login',
-    conditionType: 'negative',
-  })(ctx)
-
-  if (resultRedirect.redirect) {
-    redirect(ctx, resultRedirect?.redirect?.destination)
-  }
-}
-
-// export async function getStaticProps() {
-//   console.log(process.env.NODE_ENV)
-//   console.log(process.env.APP_NAME)
-
-//   return {
-//     props: {
-//       env: process.env,
-//     },
-//   }
-// }
 
 export default App
