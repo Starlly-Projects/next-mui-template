@@ -8,7 +8,6 @@ html,
 body {
   margin: 0;
   padding: 0;
-  color: #333333;
 }
 
 html,
@@ -18,6 +17,7 @@ body {
   font-size: 16px;
   width: 100%;
   font-size: 16px;
+  color: #333333;
   transition: all 400ms ease-in-out;
 }
 
@@ -30,16 +30,34 @@ a {
   color: #0680f4;
 }
 
+.truncate {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.circular {
+  border-radius: 30px;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, var(#3399ff) 5%, var(#007fff) 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 /* GENERAL UTILS */
 .hide {
   display: none;
-}
-
-.unselectable {
-  -webkit-user-select: none; /* Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10+/Edge */
-  user-select: none; /* Standard */
 }
 
 .underline {
@@ -375,4 +393,31 @@ a {
 .form-group label {
   font-weight: bold;
   margin-bottom: 4px;
+}
+
+@keyframes fadeInOut {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+}
+
+.animation-fadeinout {
+  animation: fadeInOut 2s infinite;
+}
+
+.invisible {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.visible {
+  opacity: 1;
 }

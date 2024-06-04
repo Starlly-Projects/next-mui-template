@@ -1,18 +1,29 @@
 import useEnv from '@/core/hooks/useEnv'
 import useWords from '@/modules/core/hooks/useWords'
-import { Container } from '@mui/material'
+import { HomeContainer } from './styles'
+import LangSelector from '../../shared/LangSelector'
 
 const HomeView = () => {
   const { getKey } = useEnv()
-  const { WELCOME } = useWords()
+  const {
+    HOME: { WELCOME },
+  } = useWords()
 
   return (
-    <Container>
-      <h1>
-        <span className='mr-1'>{WELCOME}</span>
-        <b style={{ color: 'blue' }}>{getKey('APP_NAME')}</b>
-      </h1>
-    </Container>
+    <HomeContainer>
+      <div className='header-container'>
+        <div className='title-container'>
+          <h1 className='title'>
+            <span className='mr-1'>{WELCOME}</span>
+            <b style={{ color: 'blue' }}>{getKey('APP_NAME')}</b>
+          </h1>
+        </div>
+
+        <div className='options-container'>
+          <LangSelector />
+        </div>
+      </div>
+    </HomeContainer>
   )
 }
 

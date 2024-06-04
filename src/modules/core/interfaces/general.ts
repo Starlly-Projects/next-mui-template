@@ -1,4 +1,4 @@
-import { CallbackType } from "@/core/components/shared/Types/types"
+import { CallbackType } from '@/core/components/shared/Types/types'
 
 export type GQLQueryName = 'user' | 'users' | 'file' | 'products' | 'links'
 
@@ -16,7 +16,6 @@ export type ChildrenCallbackAttach = ({
 
 export type ActionUpload = 'UPDATE_PROFILE' | 'UPDATE_COVER'
 
-
 export interface Action {
   label: string
   icon?: React.ReactElement | React.ReactElement[]
@@ -29,3 +28,5 @@ export interface Action {
   styles?: any
   href?: string
 }
+
+export type ThemeMode = 'light' | 'dark'

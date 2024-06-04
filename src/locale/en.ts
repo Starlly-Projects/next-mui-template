@@ -1,5 +1,14 @@
 const EN_LANG = {
-  WELCOME: 'Welcome to',
+  LANG_SELECTOR: {
+    TITLE: 'Lang',
+    LANGS: {
+      es: 'Spanish',
+      en: 'English',
+    },
+  },
+  HOME: {
+    WELCOME: 'Welcome to',
+  },
 }
 
 export default EN_LANG

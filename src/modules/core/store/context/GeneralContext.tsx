@@ -44,6 +44,7 @@ export const GeneralContextProvider = ({
   pageProps,
 }: ContextProps) => {
   const { locale, pathname, push } = useRouter()
+  const [env, setEnv] = useState<any>(pageProps?.env)
   const [lang, setCurrentLang] = useState<string>(
     pageProps?.lang ||
       getLocalStorageFromKey({ key: CURRENT_LANG }) ||
@@ -82,7 +83,7 @@ export const GeneralContextProvider = ({
   return (
     <GeneralContext.Provider
       value={{
-        env: pageProps?.env,
+        env,
         lang,
         generalState: {
           geoip,

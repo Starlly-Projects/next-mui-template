@@ -1,10 +1,8 @@
 import '@/core/theme/global.css'
 import 'nprogress/nprogress.css'
 import Router from 'next/router'
-import theme from '@/core/theme'
 import type { AppProps } from 'next/app'
 import { CacheProvider, EmotionCache } from '@emotion/react'
-import { ThemeProvider } from '@mui/material/styles'
 import createEmotionCache from '@/core/config/cache/createEmotionCache'
 import AppComponent from '@/core/components/shared/app'
 import NProgress from 'nprogress'
@@ -14,6 +12,7 @@ import { getCookie } from '@/core/utils/cookie'
 import { CURRENT_LANG } from '@/core/constants/cookieConstants'
 import { getProp } from '@/core/utils'
 import { SESSION_TOKEN } from '@/modules/auth/constants/cookies'
+import { ThemeContextProvider } from '@/modules/core/store/context/ThemeContext'
 
 Router.events.on('routeChangeStart', (url: any) => {
   NProgress.start()
@@ -39,9 +38,9 @@ const App = ({
     <>
       <CacheProvider value={emotionCache}>
         <ApolloProvider client={client}>
-          <ThemeProvider theme={theme}>
+          <ThemeContextProvider>
             <AppComponent pageProps={pageProps} Component={Component} />
-          </ThemeProvider>
+          </ThemeContextProvider>
         </ApolloProvider>
       </CacheProvider>
     </>
