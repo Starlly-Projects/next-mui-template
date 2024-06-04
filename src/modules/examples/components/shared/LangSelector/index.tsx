@@ -43,7 +43,12 @@ const LangSelector: React.FC<Props> = ({ className }) => {
         >
           {langs.map((item, index) => (
             <MenuItem value={item.code} key={index}>
-              <Link href={asPath} className='menuLink' locale={item.code}>
+              <Link
+                href={asPath}
+                className='menuLink'
+                locale={item.code}
+                style={{ color: 'inherit' }}
+              >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   loading='lazy'
@@ -52,9 +57,7 @@ const LangSelector: React.FC<Props> = ({ className }) => {
                   src={`https://flagcdn.com/w20/${item?.country}.png`}
                   alt=''
                 />
-                <span className='ml-1' style={{ color: '#333333' }}>
-                  {getProp(LANGS, item.code)}
-                </span>
+                <span className='ml-1'>{getProp(LANGS, item.code)}</span>
               </Link>
             </MenuItem>
           ))}
