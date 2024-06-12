@@ -1,7 +1,8 @@
 import React from 'react'
-import { AdminLayoutWrapper, Body } from './styles'
+import { AdminLayoutWrapper, Body, ChildrenContainer } from './styles'
 import Head from 'next/head'
 import LeftPanel from './LeftPanel'
+import TopMenu from './LeftPanel/TopMenu'
 
 interface Props {
   title?: string
@@ -20,7 +21,10 @@ const AdminLayout: React.FC<Props> = ({
       <AdminLayoutWrapper>
         <LeftPanel />
 
-        <Body>{children}</Body>
+        <Body>
+          <TopMenu />
+          <ChildrenContainer>{children}</ChildrenContainer>
+        </Body>
       </AdminLayoutWrapper>
     </>
   )

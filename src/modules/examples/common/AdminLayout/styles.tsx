@@ -9,3 +9,5 @@ export const Body = styled('div')`
   flex-direction: column;
   flex: 1 1;
 `
+
+export const ChildrenContainer = styled('div')``

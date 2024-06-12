@@ -38,7 +38,6 @@ export const LeftPanelWrapper = styled('div')`
   flex: 0 0 auto;
   background-color: #202537;
   width: ${LEFT_MENU_WIDTH + 'px'};
-  border-right: 1px solid #dfdfdf;
   height: 100vh;
   position: sticky;
 

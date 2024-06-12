@@ -68,8 +68,8 @@ export const ToolsHeaderWrapper = styled('div')`
       width: 50px;
       height: 50px;
       border-radius: 50%;
-      background-color: yellow;
       border: 2px solid #ffffff;
+      object-fit: cover;
     }
 
     .header-content {
