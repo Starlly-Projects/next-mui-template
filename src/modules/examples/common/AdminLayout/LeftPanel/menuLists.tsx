@@ -30,10 +30,6 @@ export interface GroupItemProps {
 }
 
 export const useMenuList = () => {
-  const {
-   
-  } = useWords()
-
   const NORMAL_MENU: Array<GroupItemProps> = [
     {
       menu: [
@@ -93,7 +89,7 @@ export const useMenuList = () => {
         },
         {
           id: 'Startup',
-          label: "Bussines text",
+          label: 'Bussines text',
           href: '/dashboard/plans/startup',
           icon: <WorkspacePremiumOutlinedIcon />,
         },
@@ -135,24 +131,24 @@ export const useMenuList = () => {
       ],
     },
     {
-      title: "Más",
+      title: 'Más',
       menu: [
         {
           id: 'aboutwaref',
           href: '/dashboard/about',
-          label: "Nosotros",
+          label: 'Nosotros',
           icon: <InfoOutlinedIcon />,
         },
         {
           id: 'add',
           href: '/dashboard/publisher',
-          label: "Publicar",
+          label: 'Publicar',
           icon: <DomainAddOutlinedIcon />,
         },
         {
           id: 'help',
           href: '/dashboard/help',
-          label: "Soporte",
+          label: 'Soporte',
           icon: <HelpOutlineOutlinedIcon />,
         },
       ],

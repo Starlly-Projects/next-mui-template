@@ -7,6 +7,7 @@ import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import { GroupItemProps, useMenuList } from './menuLists'
 import useRouterPath from '@/modules/core/hooks/useRouterPath'
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 
 const MenuListComponent = ({ type }: any) => {
   const { comparePath } = useRouterPath()
@@ -28,7 +29,7 @@ const MenuListComponent = ({ type }: any) => {
             {group.menu.map((item: any, menuIndex: any) => (
               <Fragment key={menuIndex}>
                 <li>
-                  <Link href={item.href || '/'} className="text-undecorated">
+                  <Link href={item.href || '/'} className='text-undecorated'>
                     <ListItemButton
                       className={classnames({
                         active: comparePath(item.href),
@@ -38,10 +39,12 @@ const MenuListComponent = ({ type }: any) => {
 
                       <ListItemText primary={item.label} />
 
-                      <ToolTipCustom className="ToolTip">
+                      <ToolTipCustom className='ToolTip'>
                         <ListItemIcon>{item.icon}</ListItemIcon>
-                        <span className="label">{item.label}</span>
+                        <span className='label'>{item.label}</span>
                       </ToolTipCustom>
+
+                      <KeyboardArrowDownIcon className='caret-icon' />
                     </ListItemButton>
                   </Link>
                 </li>

@@ -36,13 +36,34 @@ export const LeftPanelWrapper = styled('div')`
   z-index: 10;
   transition: width 0.2s;
   flex: 0 0 auto;
-  background-color: #ffffff;
+  background-color: #202537;
   width: ${LEFT_MENU_WIDTH + 'px'};
   border-right: 1px solid #dfdfdf;
-  height: calc(100vh - 64px);
+  height: 100vh;
   position: sticky;
-  top: 64px;
-  /* overflow: auto; */
+
+  .page-logo {
+    padding: 10px 20px;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    color: #ffffff;
+    background-color: #0000004f;
+
+    .img-logo {
+      width: 36px;
+      border-radius: 50%;
+    }
+
+    .app-name {
+    }
+
+    .caret-icon {
+      margin-left: auto;
+      font-size: 1em;
+    }
+  }
 
   @media (max-width: 1200px) {
     width: 60px;
@@ -89,8 +110,32 @@ export const LeftPanelWrapper = styled('div')`
 export const LeftPanelContainer = styled('div')`
   position: sticky;
   top: 64px;
-  min-height: calc(100vh - 64px);
-  overflow: auto;
+  height: calc(100vh - 60px);
+
+  .MuiListSubheader-root {
+    background-color: transparent;
+    color: rgb(255 255 255 / 80%);
+    font-size: 0.7em;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .MuiButtonBase-root {
+    padding-left: 20px;
+    padding-right: 20px;
+
+    .MuiListItemText-root,
+    .MuiListItemIcon-root {
+      color: #ffffff;
+    }
+
+    .caret-icon {
+      margin-left: auto;
+      color: #ffffff;
+      font-size: 1em;
+    }
+  }
 `
 
 export const List = styled(MuiList)``
@@ -144,7 +189,8 @@ export const RSSStack = styled(MuiStack)`
 
 export const SocialIconButton = styled(MuiIconButton)`
   padding: 0;
-  transition: transform 0.1s ease-in-out; /* Transición suave de la propiedad "transform" */
+  transition: transform 0.1s ease-in-out;
+
   &:active {
     transform: scale(1.2);
   }

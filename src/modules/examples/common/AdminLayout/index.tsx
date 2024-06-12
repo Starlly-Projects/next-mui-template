@@ -16,8 +16,10 @@ const AdminLayout: React.FC<Props> = ({
       <Head>
         <title>{title}</title>
       </Head>
+
       <AdminLayoutWrapper>
         <LeftPanel />
+
         <Body>{children}</Body>
       </AdminLayoutWrapper>
     </>
