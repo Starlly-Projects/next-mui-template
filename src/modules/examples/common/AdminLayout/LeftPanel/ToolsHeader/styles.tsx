@@ -27,12 +27,97 @@ export const ButtonOpenFilter = styled(ButtonBase)`
 `
 
 export const ToolsHeaderWrapper = styled('div')`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 140px;
-  overflow: hidden;
+  @keyframes fadeOutCollapse {
+    0% {
+      opacity: 1;
+      height: auto;
+      overflow: hidden;
+    }
+    100% {
+      opacity: 0;
+      height: 0;
+      overflow: hidden;
+      padding: 0;
+    }
+  }
+
+  @keyframes fadeInExpand {
+    0% {
+      opacity: 0;
+      height: 0;
+      overflow: hidden;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .hidden {
+    .filter-container {
+      display: none !important;
+    }
+
+    animation: fadeOutCollapse 0.3s ease-in-out forwards;
+  }
+
+  .visible {
+    animation: fadeInExpand 0.5s ease-in-out forwards;
+  }
+
+  .filter-card {
+    background-color: #1c202d;
+    height: 60px;
+    padding: 10px;
+    display: flex;
+    width: 100%;
+
+    .adornment {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .filter-container {
+      position: relative;
+      display: block;
+      width: 100%;
+
+      .filter-input {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        color: #ffffff;
+        input {
+          color: #ffffff;
+        }
+        fieldset {
+          background-color: rgba(255, 255, 255, 0.3);
+        }
+      }
+
+      .btn-hide-filter {
+        position: absolute;
+        top: 50%;
+        right: 5px;
+        transform: translateY(-50%);
+        width: 26px;
+        height: 26px;
+        padding: 0;
+        border-radius: 6px;
+        background-color: rgba(0, 0, 0, 0.5);
+        border: 1px solid #000000;
+        color: #ffffff;
+      }
+    }
+  }
+
+  .info-card {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 140px;
+    overflow: hidden;
+  }
 
   .cover-image {
     position: absolute;
