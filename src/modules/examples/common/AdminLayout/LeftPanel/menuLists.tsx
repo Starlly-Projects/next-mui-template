@@ -14,14 +14,14 @@ import StarRateIcon from '@mui/icons-material/StarRate'
 import PeopleIcon from '@mui/icons-material/People'
 import CardMembershipIcon from '@mui/icons-material/CardMembership'
 import { ROUTES } from '@/constants/site.routes'
-import useWords from '@/modules/core/hooks/useWords'
 
 export interface MenuItemProps {
   id: string
   label: string
   href?: string
-  icon: any
+  icon?: any
   active?: boolean
+  menu?: Array<MenuItemProps>
 }
 
 export interface GroupItemProps {
@@ -35,34 +35,45 @@ export const useMenuList = () => {
       menu: [
         {
           id: 'home',
-          label: 'Para ti',
-          href: ROUTES.HOME,
+          label: 'Opción 1',
+          icon: <HomeIcon />,
+          active: true,
+          menu: [
+            {
+              id: 'home1_1',
+              label: 'Subopción 1',
+            },
+            {
+              id: 'home1_2',
+              label: 'Subopción 2',
+            },
+            {
+              id: 'home1_3',
+              label: 'Childs',
+              menu: [
+                {
+                  id: 'home1_1_1',
+                  label: 'Child 1',
+                },
+                {
+                  id: 'home1_1_2',
+                  label: 'Child 2',
+                },
+              ],
+            },
+          ],
+        },
+        {
+          id: 'home2',
+          label: 'Opción 2',
           icon: <HomeIcon />,
           active: true,
         },
         {
-          id: 'popular',
-          label: 'Popular',
-          href: '/popular',
-          icon: <StarsIcon />,
-        },
-        {
-          id: 'popular',
-          label: 'Suscrito',
-          href: '/popular',
-          icon: <CardMembershipIcon />,
-        },
-        {
-          id: 'popular',
-          label: 'Siguiendo',
-          href: '/popular',
-          icon: <PeopleIcon />,
-        },
-        {
-          id: 'popular',
-          label: 'Favoritos',
-          href: '/popular',
-          icon: <StarRateIcon />,
+          id: 'home3',
+          label: 'Opción 2',
+          icon: <HomeIcon />,
+          active: true,
         },
       ],
     },

@@ -111,6 +111,58 @@ export const LeftPanelContainer = styled('div')`
   top: 64px;
   height: calc(100vh - 60px);
 
+  .MuiList-root {
+    .MuiButtonBase-root {
+      .MuiListItemIcon-root {
+        font-size: 0.8em;
+      }
+
+      .MuiListItemText-root .MuiTypography-root {
+        font-size: 0.9em;
+        line-height: normal;
+      }
+    }
+
+    & > li {
+      & > .submenu {
+        position: relative;
+        padding: 0;
+        display: block;
+        background-color: rgba(0, 0, 0, 0.2);
+
+        li .submenu {
+          background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        &:before {
+          position: absolute;
+          content: '';
+          display: block;
+          z-index: 1;
+          left: 2rem;
+          top: 0px;
+          bottom: 0;
+          border-left: 1px dashed rgba(255, 255, 255, 0.1);
+        }
+
+        & > li > .MuiButtonBase-root {
+          position: relative;
+          &:before {
+            content: '';
+            position: absolute;
+            width: 0.4rem;
+            height: 0.4rem;
+            border-radius: 50%;
+            left: calc(2rem - 0.2rem);
+            background-color: rgba(255, 255, 255, 0.6);
+            top: 50%;
+            transform: translateY(-50%);
+          }
+        }
+      }
+    }
+  }
+
   .MuiListSubheader-root {
     background-color: transparent;
     color: rgb(255 255 255 / 80%);
