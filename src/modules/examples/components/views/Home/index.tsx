@@ -3,6 +3,7 @@ import useWords from '@/modules/core/hooks/useWords'
 import { HomeContainer } from './styles'
 import LangSelector from '../../shared/LangSelector'
 import ThemeSwitch from '../../shared/ThemeSwitch'
+import Image from 'next/image'
 
 const HomeView = () => {
   const { getKey } = useEnv()
@@ -24,6 +25,14 @@ const HomeView = () => {
           <ThemeSwitch />
           <LangSelector />
         </div>
+      </div>
+      <div>
+        <Image
+          src='/static/cover.png'
+          width={200}
+          height={100}
+          alt='ok'
+        />
       </div>
     </HomeContainer>
   )

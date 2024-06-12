@@ -1,7 +1,8 @@
-import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client'
+import { ApolloClient, InMemoryCache } from '@apollo/client'
+import { createUploadLink } from 'apollo-upload-client'
 
 const getApolloClient = (token?: string) => {
-  const link: any = createHttpLink({
+  const link: any = createUploadLink({
     headers: {
       'apollo-require-preflight': 'true',
       authorization: `Bearer ${token}`,
