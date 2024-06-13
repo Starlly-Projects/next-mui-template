@@ -9,11 +9,7 @@ import WorkspacePremiumOutlinedIcon from '@mui/icons-material/WorkspacePremiumOu
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined'
 import { Add } from '@mui/icons-material'
 import HomeIcon from '@mui/icons-material/Home'
-import StarsIcon from '@mui/icons-material/Stars'
-import StarRateIcon from '@mui/icons-material/StarRate'
-import PeopleIcon from '@mui/icons-material/People'
-import CardMembershipIcon from '@mui/icons-material/CardMembership'
-import { ROUTES } from '@/constants/site.routes'
+import { useState } from 'react'
 
 export interface MenuItemProps {
   id: string
@@ -166,5 +162,30 @@ export const useMenuList = () => {
     },
   ]
 
-  return { NORMAL_MENU }
+  const [menuList, setMenuList] = useState<Array<GroupItemProps>>(NORMAL_MENU)
+
+  const assingChanges = (
+    item: MenuItemProps,
+    menu: Array<MenuItemProps> = []
+  ) => {
+    return menu.map((itemElement) => {
+      if (item.id === itemElement.id) {
+        return item
+      }
+
+      itemElement.menu = assingChanges(item, itemElement.menu)
+      return itemElement
+    })
+  }
+
+  const onChangeMenu = (item: any) => {
+    const newMenuList = menuList.map((menuItemList) => ({
+      ...menuItemList,
+      menu: assingChanges(item, menuItemList.menu),
+    }))
+
+    setMenuList(newMenuList)
+  }
+
+  return { menuList, setMenuList, onChangeMenu, NORMAL_MENU }
 }

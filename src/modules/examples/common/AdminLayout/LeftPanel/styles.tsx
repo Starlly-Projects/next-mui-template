@@ -111,6 +111,40 @@ export const LeftPanelContainer = styled('div')`
   top: 64px;
   height: calc(100vh - 60px);
 
+  @keyframes fadeOutCollapse {
+    0% {
+      opacity: 1;
+      height: auto;
+      overflow: hidden;
+    }
+    100% {
+      opacity: 0;
+      height: 0;
+      overflow: hidden;
+      padding: 0;
+    }
+  }
+
+  @keyframes open {
+    0% {
+      opacity: 0;
+      height: 0;
+      overflow: hidden;
+    }
+    100% {
+      opacity: 1;
+      height: auto;
+    }
+  }
+
+  .hidden {
+    /* .filter-container { */
+    /* display: none !important; */
+    /* } */
+
+    /* animation: fadeOutCollapse 0.3s ease-in-out forwards; */
+  }
+
   .MuiList-root {
     .MuiButtonBase-root {
       .MuiListItemIcon-root {
@@ -127,10 +161,15 @@ export const LeftPanelContainer = styled('div')`
       & > .submenu {
         position: relative;
         padding: 0;
-        display: block;
+        height: 0;
+        overflow: hidden;
+        transition: height 0.5s ease-out;
         background-color: rgba(0, 0, 0, 0.2);
 
         li .submenu {
+          height: 0;
+          overflow: hidden;
+          transition: height 0.5s ease-out;
           background-color: rgba(0, 0, 0, 0.2);
         }
 
@@ -160,6 +199,18 @@ export const LeftPanelContainer = styled('div')`
           }
         }
       }
+    }
+  }
+
+  @keyframes expand {
+    0% {
+      height: 0;
+      overflow: hidden;
+    }
+
+    100% {
+      height: auto;
+      opacity: 1;
     }
   }
 

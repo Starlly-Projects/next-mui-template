@@ -33,6 +33,9 @@ export const ToolsHeaderWrapper = styled('div')`
       height: auto;
       overflow: hidden;
     }
+    50% {
+      opacity: 0.4;
+    }
     100% {
       opacity: 0;
       height: 0;
