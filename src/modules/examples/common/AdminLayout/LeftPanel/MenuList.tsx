@@ -9,7 +9,7 @@ import MenuItem from './MenuItem'
 
 const MenuListComponent = ({ type }: any) => {
   const { comparePath } = useRouterPath()
-  const { menuList, onChangeMenu, NORMAL_MENU } = useMenuList()
+  const { menuList, onChangeMenu } = useMenuList()
   const isNormal = type === 'NORMAL'
 
   return (

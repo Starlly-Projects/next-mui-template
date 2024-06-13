@@ -55,6 +55,16 @@ export const useMenuList = () => {
                   id: 'home1_1_2',
                   label: 'Child 2',
                 },
+                {
+                  id: 'home1_1_3',
+                  label: 'Child 3',
+                  menu: [
+                    {
+                      id: 'home1_1_3_1',
+                      label: 'Child 1',
+                    },
+                  ],
+                },
               ],
             },
           ],
