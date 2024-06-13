@@ -8,7 +8,7 @@ interface Props {
 }
 
 const LeftPanel: React.FC<Props> = ({ type = 'NORMAL' }) => {
-  return <NormalMenu type={type} />
+  return <>{type === 'NORMAL' && <NormalMenu type={type} />}</>
 }
 
 export default LeftPanel

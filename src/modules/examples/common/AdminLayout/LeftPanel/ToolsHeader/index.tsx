@@ -45,6 +45,7 @@ const ToolsHeader = () => {
             }}
             fullWidth
           />
+
           <ButtonBase className={'btn-hide-filter'} onClick={toggleTool}>
             <ExpandLessIcon />
           </ButtonBase>

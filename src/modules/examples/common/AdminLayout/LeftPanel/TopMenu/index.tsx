@@ -50,6 +50,7 @@ function TopMenu() {
           </ButtonComponent>
 
           <Img src='/logo-react.webp' className='logo-img' />
+
           <Typography
             variant='h6'
             noWrap
@@ -100,7 +101,9 @@ function TopMenu() {
               ))}
             </Menu>
           </Box>
+
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+
           <Typography
             variant='h5'
             noWrap
