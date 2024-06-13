@@ -17,26 +17,35 @@ const MenuItem = ({
   className?: string
   onChangeMenu?: any
 }) => {
+  const getCurrentHeight = (submenu: any) => {
+    if (!submenu) {
+      return 0
+    }
+
+    let heightSize = 0
+    const items = submenu.querySelectorAll('&> li')
+
+    items.forEach((elementItem: any) => {
+      heightSize += elementItem.offsetHeight
+    })
+
+    return heightSize
+  }
+
   const openMenu = (event: any) => {
     const item = event.target.closest('li')
     const submenu = item.querySelector('.submenu')
-    const lastHeight = submenu.getAttribute('last-height')
+    const lastHeight = getCurrentHeight(submenu)
     submenu.style.height = `${lastHeight}px`
 
     if (submenu) {
-      let heightSize = 0
-      const items = submenu.querySelectorAll('&> li')
-
-      items.forEach((elementItem: any) => {
-        heightSize += elementItem.offsetHeight
-      })
+      let heightSize = getCurrentHeight(submenu)
 
       submenu.style.height = `${heightSize}px`
       submenu.style.animation = `height 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;`
 
       setTimeout(() => {
         if (submenu.classList.contains('open')) {
-          submenu.setAttribute('last-height', heightSize)
           submenu.style.height = `auto`
         }
       }, 400)

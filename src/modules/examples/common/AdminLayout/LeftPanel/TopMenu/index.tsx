@@ -8,7 +8,6 @@ import Menu from '@mui/material/Menu'
 import MenuIcon from '@mui/icons-material/Menu'
 import Container from '@mui/material/Container'
 import Avatar from '@mui/material/Avatar'
-import Button from '@mui/material/Button'
 import Tooltip from '@mui/material/Tooltip'
 import MenuItem from '@mui/material/MenuItem'
 import AdbIcon from '@mui/icons-material/Adb'
@@ -18,7 +17,7 @@ import Img from '@/modules/core/components/shared/Img'
 import Breadcrumb from './Breadcrumb'
 
 const pages = ['Products', 'Pricing', 'Blog']
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout']
+const settings = ['Perfil', 'Cuenta', 'Cerrar sesión']
 
 function TopMenu() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
