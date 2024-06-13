@@ -23,13 +23,28 @@ export const TopMenuWrapper = styled('div')`
     }
 
     .toolbar {
+      padding: 0 20px;
+    }
+
+    .button-menu-control {
+      width: 10px;
+      box-shadow: none;
+      border: 1px solid #ebebeb;
+      color: #333333;
       padding: 0;
+      width: 40px;
+      height: 40px;
+      min-width: unset;
+      margin-right: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 `
 
 export const BreadcrumbWrapper = styled('div')`
-  background-color: #F0F0F0;
+  background-color: #f0f0f0;
   height: 40px;
   display: flex;
   align-items: center;
